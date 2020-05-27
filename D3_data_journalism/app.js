@@ -127,7 +127,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
   };
 
 //Retrieve data from csv file
-d3.csv("../../data/data.csv").then(function(stateData, err) {
+d3.csv("data/data.csv").then(function(stateData, err) {
     if (err) throw err;
 
     // parse data
