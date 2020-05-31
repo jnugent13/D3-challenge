@@ -75,21 +75,23 @@ d3.csv("D3_data_journalism/data/data.csv").then(function(stateData, err) {
         .text("Lacks Healthcare (%)");
     
     // append circles
-    var circlesGroup = chartGroup.selectAll("circle")
+    var circlesGroup = chartGroup.append("g")
+        .selectAll("circle")
         .data(stateData)
         .enter()
         .append("circle")
         .attr("cx", d => xLinearScale(d.poverty))
         .attr("cy", d => xLinearScale(d.healthcare))
         .attr("r", 15)
-        .classed("stateCircle", true);
+        .classed("stateCircle", true)
+        .text(stateData.abbr);
     
-    var circlesText = circlesGroup.append("g")
-      .selectAll("text")
-      .data(stateData)
-      .enter()
-      .append("text", d => d.abbr)
-      .classed("stateText", true);
+    // var circlesText = circlesGroup
+    //   .selectAll("text")
+    //   .data(stateData)
+    //   .enter()
+    //   .append("text", d => d.abbr)
+    //   .classed("stateText", true);
   
 }).catch(function(err) {
   console.log(err)
